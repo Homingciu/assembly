@@ -1,0 +1,32 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+.jalousie{
+	list-style: none;
+	font-size: 25px;
+	width: 400px;
+}
+
+.jalousie .jalousie-cell{
+	background: orange;
+	opacity: 0.5;
+	border-bottom: 1px dashed black;
+	position: relative;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	overflow: hidden;
+}
+
+.jalousie .jalousie-cell div{
+	position: absolute;
+	top: 0px;
+	left: 150px;
+	height: 60px;
+}
+
+.jalousie-cell div p{
+	height: 30px;
+}

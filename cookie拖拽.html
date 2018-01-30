@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				text-decoration: none;
+			}
+			.box{
+				background: red;
+				left: 0;
+				top: 0;
+				width: 100px;
+				height: 100px;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<script type="text/javascript" src="cookie.js"></script>
+		<script type="text/javascript">
+		
+			var dragFnc = {
+				init : function (dom) {
+					this.Div = dom;
+					this.bindEvent();
+				},
+				setPosition : function (dom) {
+					this.Div = dom;
+					var newLeft,
+						newTop;
+					cookieManage
+								.getCookie("lastL", function (data) {
+									newLeft = data;
+								})
+								.getCookie("lastT", function (data) {
+									newTop = data;
+								})
+					if(newLeft) {
+						this.Div.style.left = newLeft + "px";
+					}			
+					if(newTop) {
+						this.Div.style.top = newTop + "px";
+					}
+					
+					this.bindEvent();				
+				},
+				bindEvent : function () {
+					this.Div.onmousedown = this.onDivDown.bind(this);
+				},
+				onDivDown : function (event) {
+					this.DisX = event.clientX - this.Div.offsetLeft;
+					this.DisY = event.clientY - this.Div.offsetTop;
+					document.onmousemove = this.onDivMove.bind(this);
+					document.onmouseup = this.onDivUp.bind(this);
+				},	
+				onDivMove : function (event) {
+					var newL = event.clientX - this.DisX,
+					 	newT = event.clientY - this.DisY;
+					this.Div.style.left = newL + "px";
+					this.Div.style.top = newT + "px";
+					this.lastL = newL;
+					this.lastT = newT; 	
+				},
+				onDivUp : function () {
+					document.onmousemove = null;
+					document.onmouseup = null;
+					cookieManage
+								.setCookie("lastL", this.lastL, 1)
+								.setCookie("lastT", this.lastT, 1)
+
+				}
+			}
+
+			var $Div = document.getElementsByTagName("div")[0];
+			dragFnc.setPosition($Div);
+
+
+		</script>
+	</body>
+</html>	
+	

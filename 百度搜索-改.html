@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<style type="text/css">
+			.wrapper ul {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<input type="text" class="input1">
+			<ul></ul>
+		</div>
+		
+		<script type="text/javascript">
+			var $Input = document.getElementsByTagName("input")[0],
+				oUl = document.getElementsByTagName("ul")[0],
+				lastScript = null;
+	
+			$Input.onkeyup = function () {
+				if(this.value) {
+					lastScript != null ? document.body.removeChild(lastScript) : "";
+					$Script = document.createElement("script");
+					document.body.appendChild($Script);	
+					$Script.src = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=" + this.value + "&cb=search";
+					lastScript = $Script;
+				}
+			}	
+
+			var search = function (data) {
+				var arrData = data.s,
+					html = '';
+				if(arrData.length != 0) {
+					arrData.forEach(function (item) {
+						html += "<li><a href='https://www.baidu.com/s?wd=" + item + "'>" + item + "</a></li>";
+					})
+					oUl.innerHTML = html;
+					oUl.style.display = "block";
+				}else {
+					oUl.style.display = "none";
+				}	
+			}
+		</script>
+
+	</body>
+</html>		
+
+<!-- https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=json&cb=duyi -->

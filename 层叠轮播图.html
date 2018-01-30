@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				text-decoration: none;
+			}
+			.wrapper{
+				width: 970px;
+				height: 310px;
+				position: relative;
+				left: 300px;
+				top: 100px;
+				overflow: hidden;
+			}
+
+			.wrapper .content li{
+				width: 530px;
+				height: 224px;
+				position: absolute;
+				z-index: 0;
+				opacity: 1;
+				margin-top: 23px;
+			}
+			.wrapper .content img{
+				height: 100%;
+				width: 100%;
+			}
+			.clear{
+				clear: both;
+			}
+			/*.wrapper .hidden{
+				background: url(http://static.youku.com/index/img/2013/rightShadow.png) no-repeat;
+				position: absolute;
+				width: 200px;
+				height: 200px;
+			}*/
+			.wrapper .elementOverlay{
+				width: 970px;
+				height: 224px;
+				z-index: 1;
+				position: absolute;
+				left: 0;
+				top: 23px;
+				background: #000;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<span class="elementOverlay" style="opacity: 0.4"></span>
+			<ul class="content">
+				<li class="pic_1" style="left: -530px;">
+					<img src="http://r3.ykimg.com/051000005805871267BC3D14660229D4">
+				</li>
+				<li class="pic_2" style="left: 0px;">
+					<img src="http://r1.ykimg.com/0510000057F8911C67BC3D19B20864BD">
+				</li>
+				<li class="pic_3" style="left: 165px;z-index: 1;margin-top: 0;width: 640px;height: 270px;">
+					<img src="http://r1.ykimg.com/0510000057FDB4B067BC3D04A60E1DDB">
+				</li>
+				<li class="pic_4" style="left: 440px;">
+					<img src="http://r4.ykimg.com/0510000057F8901B67BC3D52C50CED07">
+				</li>
+
+				<!-- 最后一张 -->
+				<li class="pic_5 last" style="left: 970px;">
+					<img src="http://r2.ykimg.com/0510000057EDC7B467BC3D0BC6085D07">
+				</li>
+				<div class="clear"></div>
+			</ul>
+		</div>
+
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">
+			
+
+			var $LiCollection = document.getElementsByTagName("li"),
+			 	LiLen = $LiCollection.length,
+				 i,
+			 	key = false,
+			 	width = 530,
+			 	num = null; 
+			
+			
+				
+					
+			
+			function one() {
+				first = setInterval(function () {
+					for(i = 0; i < LiLen; i ++) {
+						if($LiCollection[i].offsetLeft == 440) {
+							$LiCollection[i].style.zIndex = 2;
+							num = i;
+							key = true;
+						}
+					}
+
+					var second = setInterval(function () {
+						if(key){
+							if($LiCollection[num].style.zIndex == 2) {
+								for(i = 0; i < LiLen; i ++) {
+									switch($LiCollection[i].offsetLeft) {
+										case -530:
+											$LiCollection[i].style.left = "970px";
+											break;
+										case 0:
+											$($LiCollection[i]).animate({left: ($LiCollection[i].offsetLeft - 530) + "px"}, 500);
+											break;
+										case 165:
+											$($LiCollection[i]).animate({width: "530px", height: "224px", marginTop: "23px", zIndex: "0", left: ($LiCollection[i].offsetLeft - 165) + "px"}, 500);
+											break;
+										case 440:
+											$($LiCollection[i]).animate({width: "640px", height: "270px", marginTop: "0px", zIndex: "1", left: ($LiCollection[i].offsetLeft - 275) + "px"}, 500);
+											break;
+										case 970:
+											$($LiCollection[i]).animate({left: ($LiCollection[i].offsetLeft - 530) + "px"}, 500);
+											break;
+									}				
+								}
+								clearInterval(second);	
+							}
+						}	
+					}, 0)	
+				}, 1000)
+			}
+			one();
+			
+		</script>
+	</body>
+</html>		

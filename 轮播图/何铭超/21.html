@@ -1,0 +1,96 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="21.css">
+	</head>
+	<body>
+		<div style="width:400px;height:220px;background-color:red;position:absolute;left:0;top:0;overflow:hidden;">
+			<ul class="slider" style="left:-20px;background:red;">
+				<li class="slider-item">
+					<img class="slider-pic" src="http://r2.ykimg.com/05100000577CFFE167BC3D5994021FAF">
+				</li>
+				<li class="slider-item">
+					<img class="slider-pic" src="http://r4.ykimg.com/0510000057B3C72F67BC3D660D0C91BB">
+				</li>
+				<li class="slider-item">
+					<img class="slider-pic" src="http://r2.ykimg.com/0510000057945F1967BC3D7B8E0826FA">
+				</li>
+				<li class="slider-item">
+					<img class="slider-pic" src="http://r3.ykimg.com/05100000579E076D67BC3D7879011AD8">
+				</li>
+				<li class="slider-item">
+					<img class="slider-pic" src="http://r2.ykimg.com/05100000577CFFE167BC3D5994021FAF">
+				</li>
+			</ul>
+			<span class="slider-page">
+				<i class="active"></i>
+				<i class></i>
+				<i class></i>
+				<i class></i>
+			</span>
+		</div>
+		<script type="text/javascript">
+			var li = document.getElementsByTagName("li");
+			var len = li.length;
+			var i = document.getElementsByTagName("i");
+			li[0].style.left = "0";
+			li[1].style.left = "400px";
+			li[2].style.left = "800px";
+			li[3].style.left = "1200px";
+			li[4].style.left = "1600px";	
+			window.setInterval(function () {
+				if(parseInt(li[4].style.left) == 0) {
+					li[0].style.left = "0";
+					li[1].style.left = "400px";
+					li[2].style.left = "800px";
+					li[3].style.left = "1200px";
+					li[4].style.left = "1600px";
+				}else{
+					var n = 0;
+					var time = window.setInterval(function () {
+						if(n < 8) {
+							li[0].style.left = parseInt(li[0].style.left) - 50 + "px";
+							li[1].style.left = parseInt(li[1].style.left) - 50 + "px";
+							li[2].style.left = parseInt(li[2].style.left) - 50 + "px";
+							li[3].style.left = parseInt(li[3].style.left) - 50 + "px";
+							li[4].style.left = parseInt(li[4].style.left) - 50 + "px";
+							n ++;
+						}else {
+							clearInterval(time);
+						}
+					},100);
+				}
+				for(var num = 0; num < len - 1; num ++) {
+					i[num].className = "";
+				}
+				for(var num = 0; num < len; num ++) {
+					if(parseInt(li[num].style.left) == 0) {
+						if(num == 4) {
+							i[0].className = "active";
+						}else{
+							i[num].className = "active";
+						}
+						
+					}
+				}
+			},2000);
+			
+			
+
+			// var i = document.getElementsByTagName("i");
+			// var n = 1;
+			// setInterval(function () {
+			// 	if(n > 3) {
+			// 		n = 0;
+			// 	}else {
+			// 		i[0].className = "";
+			// 		i[1].className = "";
+			// 		i[2].className = "";
+			// 		i[3].className = "";
+			// 		i[n].className = "active";
+			// 		n ++;
+			// 	}
+			// },2000);	
+		</script>
+	</body>
+</html>

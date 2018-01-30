@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        @font-face{
+            font-family: myFirstFont;
+            src: url('Braggadocio.ttf'),
+                url('Braggadocio.eot')format("eat");
+        }
+        .wrapper{
+           display: flex;
+           width: 800px;
+           position: absolute;
+           left: 50%;
+           top: 50%;
+           transform: translateX(-50%) translateY(-50%);
+           /*perspective: 1000px;*/
+        }
+        .wrapper .face-box{
+           position: relative;
+           flex-grow: 1;
+           height: 60px;
+           border-right: 1px solid #fff;
+           transform-style: preserve-3d;
+           text-align: center;
+           line-height: 60px;
+           font-family: myFirstFont;
+           color: #e6703b;
+           transition: all 500ms ease-in;
+        }
+        .wrapper .face-box:hover{
+           transform: rotateX(90deg);
+         }
+         
+
+        .wrapper .face-box .front,
+        .wrapper .face-box .below{
+           position: absolute;
+           background: #00bcd4;
+           height: 60px;
+           width: 100%;
+           word-wrap: normal;
+        }
+        .wrapper .face-box .front{
+           transform: translateZ(30px);
+        }
+        .wrapper .face-box .below{
+          transform: rotateX(-90deg) translateZ(30px);
+          background: linear-gradient(30deg, #007fd4 20%, #00bcd4 80%, #007fd4 100%);  
+        }
+
+        .wrapper .face-box ul{
+            background: linear-gradient(30deg, #007fd4 20%, #00bcd4 80%, #007fd4 100%);
+            transform: rotateX(-90deg) translateY(120px) translateZ(-25px);
+            display: none;
+        }
+        .wrapper .face-box:hover ul{
+            display: block;
+        }
+      
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="face-box">
+            <div class="front">
+                <p>HMC</p>
+            </div>
+            <div class="below">
+                <p>ACXA</p>
+            </div>
+
+            <ul>
+                <li>XXX</li>
+                <li>YYY</li>
+                <li>ZZZ</li>
+            </ul>
+        </div>
+        <div class="face-box">
+            <div class="front">
+                <p>ASDD</p>
+            </div>
+            <div class="below">
+                <p>D</p>
+            </div>
+        </div>
+        <div class="face-box">
+            <div class="front">
+                <p>ASDXX</p>
+            </div>
+            <div class="below">
+                <p>DDZ</p>
+            </div>
+        </div>
+        <div class="face-box">
+            <div class="front">
+                <p>QE</p>
+            </div>
+            <div class="below">
+                <p>ASD</p>
+            </div>
+        </div>
+        <div class="face-box">
+            <div class="front">
+                <p>UOIK</p>
+            </div>
+            <div class="below">
+                <p>OOP</p>
+            </div>
+        </div>
+    </div>
+
+
+    
+</body>
+</html>

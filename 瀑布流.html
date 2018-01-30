@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.wrapper{
+				width: 900px;
+				border: 2px solid black;
+				margin:0 auto;
+			}
+
+			.wrapper ul{
+				width: 200px;
+				float: left;
+				margin-left: 20px;
+			}
+			.clear{
+				clear: both;
+			}
+			.wrapper ul img{
+				width: 200px;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<ul class="content-1"></ul>
+			<ul class="content-2"></ul>
+			<ul class="content-3"></ul>
+			<ul class="content-4"></ul>
+			<div class="clear"></div>   <!-- 清理浮动 -->
+		</div>
+		<script type="text/javascript" src="ajax.js"></script>
+		<script type="text/javascript">
+			var $ULCollection = document.getElementsByTagName("ul"),
+				UL1 = $ULCollection[0],
+				UL2 = $ULCollection[1],
+				UL3 = $ULCollection[2],
+				UL4 = $ULCollection[3];
+			var Div = document.getElementsByTagName("div")[0];	
+			
+			
+				
+
+			// Ajax("get", "getPics.php", true, '', doData);
+			// function doData(ajaxData) {
+			// 	 arrData = JSON.parse(ajaxData);
+			// 	 var DivHeight = Div.offsetHeight;
+			// 	for(var i = 0; Div.offsetHeight < DivHeight + 800; i ++) {
+			// 		var li = document.createElement("li");
+			// 		var img = document.createElement("img");
+			// 		img.src = arrData[i].image;
+			// 		li.appendChild(img);
+			// 		//排序，向最短的ul添加li、img；
+			// 		var height_1 = UL1.offsetHeight,
+			// 		 	height_2 = UL2.offsetHeight,
+			// 		 	height_3 = UL3.offsetHeight,
+			// 		 	height_4 = UL4.offsetHeight;
+			// 		 var arr = [];
+			// 		 arr.push(height_1);
+			// 		 arr.push(height_2);
+			// 		 arr.push(height_3);
+			// 		 arr.push(height_4);
+			// 		 arr.sort(function (a,b) {
+			// 		 	return a - b;
+			// 		 })	
+			// 		if(arr[0] == height_1) {
+			// 			UL1.appendChild(li);
+			// 		}else if(arr[0] == height_2) {
+			// 			UL2.appendChild(li);
+			// 		}else if(arr[0] == height_3) {
+			// 			UL3.appendChild(li);
+			// 		}else if(arr[0] == height_4) {
+			// 			UL4.appendChild(li);
+			// 		}
+			// 	}
+			// } 
+
+			// window.onscroll = function () {
+			// 	if(window.pageYOffset == document.body.scrollHeight - window.innerHeight) {
+			// 		Ajax("get", "getPics.php", true, '', doData);
+			// 	}
+			// }
+
+
+			Ajax("get", "getPics.php", true, "", function (data) {
+				console.log(data);
+			})
+		</script>
+	</body>
+</html>	
